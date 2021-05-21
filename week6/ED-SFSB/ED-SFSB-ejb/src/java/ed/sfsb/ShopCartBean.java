@@ -24,14 +24,30 @@ public class ShopCartBean implements ShopCartBeanRemote {
         cart = new ArrayList<CartItem>();
     }
 
-    @Override
-    public boolean add(CartItem cartItem) {
+    private boolean add(CartItem cartItem) {
         boolean result = false;
         try {
             result = cart.add(cartItem);
         } catch (Exception ex) {
         }
         return result;
+    }
+    
+    @Override
+    public boolean addCartItem(CartItem cartItem)
+    {
+         try {
+            if (cart.add(cartItem))
+            {
+                for (CartItem c : this.getCart())
+                {
+                    c.setQuantity(c.getQuantity() + cartItem.getQuantity()) ;
+                }
+            }
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
     }
 
     @Override

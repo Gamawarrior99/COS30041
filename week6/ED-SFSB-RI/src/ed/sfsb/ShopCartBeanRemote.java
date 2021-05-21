@@ -15,8 +15,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ShopCartBeanRemote {
-
-    boolean add(CartItem cartItem);
     ArrayList<CartItem> getCart();
+    public boolean addCartItem(CartItem cartItem);
     
 }

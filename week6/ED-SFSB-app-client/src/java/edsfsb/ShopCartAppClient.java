@@ -42,7 +42,7 @@ public class ShopCartAppClient {
 
     public void addCart(CartItem item) {
         System.out.println("Adding item " + item.getDescription() + " to cart");
-        if (shopCart.add(item)) {
+        if (shopCart.addCartItem(item)) {
             System.out.println("Your order of " + item.getQuantity()
                     + " " + item.getDescription() + " has been added.");
         } else {
