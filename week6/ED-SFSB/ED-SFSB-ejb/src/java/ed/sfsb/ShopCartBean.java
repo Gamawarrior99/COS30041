@@ -5,6 +5,7 @@
  */
 package ed.sfsb;
 
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import dto.CartItem;
 import java.util.ArrayList;
 import javax.ejb.Stateful;
@@ -32,22 +33,54 @@ public class ShopCartBean implements ShopCartBeanRemote {
         }
         return result;
     }
-    
+
+    private boolean delete(CartItem cartItem) {
+        boolean result = false;
+        try {
+            result = cart.remove(cartItem);
+        } catch (Exception ex) {
+        }
+        return result;
+    }
+
     @Override
-    public boolean addCartItem(CartItem cartItem)
-    {
-         try {
-            if (cart.add(cartItem))
-            {
-                for (CartItem c : this.getCart())
-                {
-                    c.setQuantity(c.getQuantity() + cartItem.getQuantity()) ;
+    public boolean addCartItem(CartItem cartItem) {
+        for (CartItem cartitem : this.getCart()) {
+            if (cartitem.getItemId() == cartItem.getItemId()) {
+                cartitem.setQuantity(cartitem.getQuantity() + cartItem.getQuantity());
+                return true;
+            }
+        }
+        return this.add(cartItem);
+    }
+
+    @Override
+    public boolean deleteCartItem(String itemId) {
+        for (CartItem cartitem : this.getCart()) {
+            if (cartitem.getItemId() == itemId) {
+                this.delete(cartitem);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateCartItem(CartItem cartItem) {
+        try {
+            for (CartItem cartitem : this.getCart()) {
+                if (cartitem.getItemId() == cartItem.getItemId()) {
+                    cartitem.setItemId(cartItem.getItemId());
+                    cartitem.setDescription(cartItem.getDescription());
+                    cartitem.setUnitPrice(cartItem.getUnitPrice());
+                    cartitem.setQuantity(cartItem.getQuantity());
+                    this.add(cartitem);
+                    return true;
                 }
             }
         } catch (Exception ex) {
-            return false;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -58,5 +91,4 @@ public class ShopCartBean implements ShopCartBeanRemote {
     public void remove() {
         cart = null;
     }
-
 }

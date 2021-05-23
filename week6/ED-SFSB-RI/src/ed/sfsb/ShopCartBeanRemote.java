@@ -17,5 +17,6 @@ import javax.ejb.Remote;
 public interface ShopCartBeanRemote {
     ArrayList<CartItem> getCart();
     public boolean addCartItem(CartItem cartItem);
-    
+    public boolean deleteCartItem(String itemId);
+    public boolean updateCartItem(CartItem cartItem);    
 }

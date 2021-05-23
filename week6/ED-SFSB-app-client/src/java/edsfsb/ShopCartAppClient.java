@@ -30,13 +30,24 @@ public class ShopCartAppClient {
 // assuming they are selected by the user
         CartItem item1 = new CartItem("000001", "Intel Core i7 CPU", 349.99, 2);
         CartItem item2 = new CartItem("000002", "Intel SSD 512GB", 299.99, 3);
+        CartItem item3 = new CartItem("000003", "Intel SSD 1024GB", 499.99, 2);
 
         appClient.addCart(item1);
-
         appClient.displayCart();
-
+        
         appClient.addCart(item2);
-
+        appClient.displayCart();
+        
+        appClient.addCart(item1);
+        appClient.displayCart();
+        
+        appClient.removeCart("000001");
+        appClient.displayCart();
+        
+        appClient.removeCart("000004");
+        appClient.displayCart();
+        
+        appClient.updateCart(item3);
         appClient.displayCart();
     }
 
@@ -48,6 +59,24 @@ public class ShopCartAppClient {
         } else {
             System.out.println("Sorry, your order of " + item.getQuantity() + " "
                     + item.getDescription() + " cannot be added due to low stock.");
+        }
+    }
+    
+    public void removeCart(String itemID) {
+        System.out.println("Removing Item from cart");
+        if (shopCart.deleteCartItem(itemID)) {
+            System.out.println("The Item has been removed");
+        } else {
+            System.out.println("The Item could not be removed");
+        }
+    }
+
+    public void updateCart(CartItem item) {
+        System.out.println("updateing item :" + item.getDescription());
+        if (shopCart.updateCartItem(item)) {
+            System.out.println("The Item has been updated");
+        } else {
+            System.out.println("The Item has not been updated");
         }
     }
 
