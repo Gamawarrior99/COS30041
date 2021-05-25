@@ -21,12 +21,12 @@ public class sendEmail {
 
     public static void send(String Email) {
         String smtpServer = "smtp.gmail.com";
-        String from = "gamawarrior99@gmail.com";
+        String from = "gam*****@gmail.com";
         String to = Email;
         String subject = "Your Record has been Updated";
-        String body = "Hello Gam,\nYour Record has been Updated\nIf this was not you,\nContact us at immediately at xyz@swin.com\n";
+        String body = "Hello Gam,\nYour Record has been Updated\nIf this was not you,\nContact us at immediately at xyz@help.swin.com.aun";
         String emailUser = from;
-        String password = "123";
+        String password = "youaughtynaughtywhyyouteasingme";
         try {
             Properties props = System.getProperties();
 // -- Attaching to default Session, or we could start a new one --

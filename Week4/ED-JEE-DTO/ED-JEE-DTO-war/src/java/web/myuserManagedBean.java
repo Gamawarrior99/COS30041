@@ -135,6 +135,58 @@ public class myuserManagedBean {
         return result;
     }
 
+    public String getUser() {
+        String result = "failure";
+        MyuserDTO tempDTO = myuserFacade.getRecord(this.getUserid());
+        if (tempDTO == null) {
+            return result;
+        }
+        this.setUserid(tempDTO.getUserid());
+        this.setName(tempDTO.getName());
+        this.setPassword(tempDTO.getPassword());
+        this.setEmail(tempDTO.getEmail());
+        this.setPhone(tempDTO.getPhone());
+        this.setAddress(tempDTO.getAddress());
+        this.setSecQn(tempDTO.getSecQn());
+        this.setSecAns(tempDTO.getSecAns());
+
+        result = "success";
+        return result;
+    }
+
+    public String deleteUser() {
+        String result = "failure";
+        MyuserDTO tempDTO = myuserFacade.getRecord(this.getUserid());
+        if (tempDTO == null) {
+            return result;
+        }
+        myuserFacade.deleteRecord(this.getUserid());
+        result = "success";
+        return result;
+    }
+
+    public String updateUser() {
+        String result = "failure";
+        boolean check = false;
+        MyuserDTO tempDTO = new MyuserDTO(
+                this.getUserid(),
+                this.getName(),
+                this.getPassword(),
+                this.getEmail(),
+                this.getPhone(),
+                this.getAddress(),
+                this.getSecQn(),
+                this.getSecAns()
+        );
+        check = myuserFacade.updateRecord(tempDTO);
+        if (check == false) {
+            return result;
+        }
+        sendEmail.send(this.getEmail());
+        result = "success";
+        return result;
+    }
+
     /* Some basic checking, complicated checking can be done later
 * not a good way of doing this
 * Should use JSF’s validator method to do this – left as C task

@@ -38,6 +38,9 @@ public class ShopCartAppClient {
         appClient.addCart(item2);
         appClient.displayCart();
         
+        appClient.addCart(item3);
+        appClient.displayCart();
+        
         appClient.addCart(item1);
         appClient.displayCart();
         

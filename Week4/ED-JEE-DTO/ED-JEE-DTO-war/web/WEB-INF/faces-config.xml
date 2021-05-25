@@ -10,19 +10,57 @@
             <from-outcome>success</from-outcome>
             <to-view-id>/addUserSuccess.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/addUser.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{myuserManagedBean.addUser}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/addUserSuccess.xhtml</to-view-id>
-        </navigation-case>
         <navigation-case>
             <from-action>#{myuserManagedBean.addUser}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/addUserFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/displayUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.getUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/displayUserSuccess.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.getUser}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/displayUserFail.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/deleteUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.deleteUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/deleteUserSuccess.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.deleteUser}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/deleteUserFail.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/updateUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.getUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/updateUserPartTwo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.getUser}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/updateUserFail.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/updateUserPartTwo.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{myuserManagedBean.updateUser}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/updateUserSuccess.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

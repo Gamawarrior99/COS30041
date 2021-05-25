@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>User does exist</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table style="width:100%">
+                <tr>
+                    <th>UserID</th>
+                    <th>Name</th>
+                    <th>Password</th> 
+                    <th>Email</th>
+                    <th>Phone</th> 
+                    <th>Address</th>
+                    <th>SecQn</th> 
+                    <th>SecAns</th>
+                </tr>
+                <tr>
+                    <th>#{myuserManagedBean.userid}</th>
+                    <th>#{myuserManagedBean.name}</th> 
+                    <th>#{myuserManagedBean.password}</th>
+                    <th>#{myuserManagedBean.email}</th> 
+                    <th>#{myuserManagedBean.phone}</th> 
+                    <th>#{myuserManagedBean.address}</th>
+                    <th>#{myuserManagedBean.secQn}</th>
+                    <th>#{myuserManagedBean.secAns}</th>
+                </tr>
+            </table>
+            <p></p>
+            Back to <h:commandButton value="Main Menu" action="mainmenu.xhtml"/>
+        </h:form>
+
+    </h:body>
+</html>

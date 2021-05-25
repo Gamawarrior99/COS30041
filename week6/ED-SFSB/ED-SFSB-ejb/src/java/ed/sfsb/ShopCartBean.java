@@ -45,7 +45,8 @@ public class ShopCartBean implements ShopCartBeanRemote {
 
     @Override
     public boolean addCartItem(CartItem cartItem) {
-        for (CartItem cartitem : this.getCart()) {
+        ArrayList<CartItem> cartI = this.getCart();
+        for (CartItem cartitem : cartI) {
             if (cartitem.getItemId() == cartItem.getItemId()) {
                 cartitem.setQuantity(cartitem.getQuantity() + cartItem.getQuantity());
                 return true;
@@ -56,10 +57,10 @@ public class ShopCartBean implements ShopCartBeanRemote {
 
     @Override
     public boolean deleteCartItem(String itemId) {
-        for (CartItem cartitem : this.getCart()) {
+        ArrayList<CartItem> cartI = this.getCart();
+        for (CartItem cartitem : cartI) {
             if (cartitem.getItemId() == itemId) {
-                this.delete(cartitem);
-                return true;
+                return this.delete(cartitem);
             }
         }
         return false;
