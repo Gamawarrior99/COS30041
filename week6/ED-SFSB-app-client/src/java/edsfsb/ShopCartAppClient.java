@@ -31,6 +31,7 @@ public class ShopCartAppClient {
         CartItem item1 = new CartItem("000001", "Intel Core i7 CPU", 349.99, 2);
         CartItem item2 = new CartItem("000002", "Intel SSD 512GB", 299.99, 3);
         CartItem item3 = new CartItem("000003", "Intel SSD 1024GB", 499.99, 2);
+        CartItem item4 = new CartItem("000003", "Intel SSD 1024GB", 499.99, 5);
 
         appClient.addCart(item1);
         appClient.displayCart();
@@ -50,7 +51,7 @@ public class ShopCartAppClient {
         appClient.removeCart("000004");
         appClient.displayCart();
         
-        appClient.updateCart(item3);
+        appClient.updateCart(item4);
         appClient.displayCart();
     }
 

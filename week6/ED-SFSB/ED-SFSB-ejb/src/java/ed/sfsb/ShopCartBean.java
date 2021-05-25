@@ -45,9 +45,8 @@ public class ShopCartBean implements ShopCartBeanRemote {
 
     @Override
     public boolean addCartItem(CartItem cartItem) {
-        ArrayList<CartItem> cartI = this.getCart();
-        for (CartItem cartitem : cartI) {
-            if (cartitem.getItemId() == cartItem.getItemId()) {
+        for (CartItem cartitem : this.getCart()) {
+            if (cartitem.getItemId().equals(cartItem.getItemId())) {
                 cartitem.setQuantity(cartitem.getQuantity() + cartItem.getQuantity());
                 return true;
             }
@@ -57,9 +56,8 @@ public class ShopCartBean implements ShopCartBeanRemote {
 
     @Override
     public boolean deleteCartItem(String itemId) {
-        ArrayList<CartItem> cartI = this.getCart();
-        for (CartItem cartitem : cartI) {
-            if (cartitem.getItemId() == itemId) {
+        for (CartItem cartitem : this.getCart()) {
+            if (cartitem.getItemId().equals(itemId)) {
                 return this.delete(cartitem);
             }
         }
@@ -70,12 +68,11 @@ public class ShopCartBean implements ShopCartBeanRemote {
     public boolean updateCartItem(CartItem cartItem) {
         try {
             for (CartItem cartitem : this.getCart()) {
-                if (cartitem.getItemId() == cartItem.getItemId()) {
+                if (cartitem.getItemId().equals(cartItem.getItemId())) {
                     cartitem.setItemId(cartItem.getItemId());
                     cartitem.setDescription(cartItem.getDescription());
                     cartitem.setUnitPrice(cartItem.getUnitPrice());
                     cartitem.setQuantity(cartItem.getQuantity());
-                    this.add(cartitem);
                     return true;
                 }
             }
